@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "app\scss\styles.css"/>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://kit.fontawesome.com/03411ac46f.js" crossorigin="anonymous"></script>
+    <title>React MarkDown Project</title>
+</head>
+<body>
+    <div id="appWrapper">
+        <div id = "editorWrap" class ="Wrapper">
+            <div class = header><span><i class="fa-regular fa-keyboard"></i> Editor</span><span><i class="fa-regular window fa-window-maximize"></i></span></div>
+            <textarea id="editor" type ="text"></textarea>
+        </div>
+        
+        <div id = "previewWrap" class = "Wrapper">
+            <div class = header><span><i class="fa-regular fa-file-code"></i> Previewer</span><span><i class="fa-regular window fa-window-maximize"></i></span></div>
+            <div id ="preview"></div>
+        </div>
+
+    </div>
+    
+</body>
+<script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/8.0.0/marked.min.js" integrity="sha512-BXVL0B4hjclkEj5vS1KjYncDRB7XHVAUFb/j8oaOZMTVK38R6hj6ZQsLCuijQyuN73ECpNrlc7YEC2cbfxOoLg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="app/js/Markdown.js"></script>
+</html>
+

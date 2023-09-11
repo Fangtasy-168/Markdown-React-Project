@@ -43,10 +43,10 @@ And here. | Okay. | I think we get it.
 
 ![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)
 `
-let textarea = document.querySelector("textarea")
-
-Start()
-
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+})
 
 function Start() {
   let value = defaultText
@@ -54,6 +54,10 @@ function Start() {
   document.querySelector("#editor").value = value
   Updater()
 }
+
+Start()
+
+let textarea = document.querySelector("textarea")
 
 textarea.addEventListener("input", Updater)
 
@@ -65,23 +69,18 @@ function Updater() {
 
 const windowIcon = document.querySelectorAll(".window")
 
-function changeView(event) {
-  if (event.target.getAttribute("class").includes("fa-window-maximize")) {
-    event.target.setAttribute("class", "fa-regular window fa-window-minimize")
-    if (event.target.parentElement.parentElement.parentElement.getAttribute("id") == "editorWrap") {
-      event.target.parentElement.parentElement.parentElement.setAttribute("class", "maxi Wrapper")
-      document.querySelector("#previewWrap").setAttribute("class", "hide")
-    } else {
-      event.target.parentElement.parentElement.parentElement.setAttribute("class", "maxi Wrapper")
-      document.querySelector("#editorWrap").setAttribute("class", "hide")
-    }
-  } else {
-    event.target.setAttribute("class", "fa-regular window fa-window-maximize")
-    document.querySelector("#editorWrap").setAttribute("class", "Wrapper")
-    document.querySelector("#previewWrap").setAttribute("class", "Wrapper")
-  }
-}
-
 windowIcon.forEach((icon) => {
   icon.addEventListener("click", changeView)
 })
+
+function changeView(event) {
+  event.target.classList.toggle("fa-window-maximize")
+  event.target.classList.toggle("fa-window-minimize")
+  event.target.closest(".Wrapper").classList.toggle("maxi")
+  let headers = document.querySelectorAll(".header")
+  headers.forEach((header) => {
+    if (header != event.target.closest(".header")) {
+      header.closest(".Wrapper").classList.toggle("hide")
+    }
+  })
+}

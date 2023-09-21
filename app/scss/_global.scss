@@ -22,6 +22,13 @@ body{
     background-color: #E8CEBF;
     font-size: 1.2em;
 }
+header{
+    text-align: center;
+    color: #266150;
+    font-size: larger;
+    margin: 1vh;
+
+}
 
 #appWrapper{
     height: 100%;
@@ -49,6 +56,7 @@ textarea{
     max-width: 100%;
     min-height: 300px;
     height: 99%;
+    padding-left: .5vw;
     overflow-y: auto;
     background-color: #fce0d0
 }

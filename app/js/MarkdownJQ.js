@@ -1,3 +1,4 @@
+// JQuery version of the Markdown Preview to continue practicing jquery syntax and tools
 defaultText = `
 # Welcome to my React Markdown Previewer!
 
@@ -6,7 +7,7 @@ defaultText = `
 
 Heres some code, \`<div></div>\`, between 2 backticks.
 
-\`\`\` javascript
+\`\`\`
 \/\/ this is multi-line code:
 
 function anotherExample(firstLine, lastLine) {
@@ -48,40 +49,33 @@ marked.setOptions({
   gfm: true,
 })
 
-
-function Start() {
-  let value = defaultText
-  console.log(value)
-  document.querySelector("#editor").value = value
-  Updater()
+function start() {
+  $("#editor").text(defaultText)
+  updater()
 }
 
-Start()
-
-let textarea = document.querySelector("textarea")
-
-textarea.addEventListener("input", Updater)
-
-function Updater() {
-  let value = marked.parse(document.querySelector("textarea").value)
+function updater() {
+  let value = marked.parse($("textarea").val())
   console.log(value)
-  document.querySelector("#preview").innerHTML = value
+  $("#preview").html(value)
 }
-
-const windowIcon = document.querySelectorAll(".window")
-
-windowIcon.forEach((icon) => {
-  icon.addEventListener("click", changeView)
-})
 
 function changeView(event) {
-  event.target.classList.toggle("fa-window-maximize")
-  event.target.classList.toggle("fa-window-minimize")
-  event.target.closest(".Wrapper").classList.toggle("maxi")
-  let headers = document.querySelectorAll(".header")
-  headers.forEach((header) => {
-    if (header != event.target.closest(".header")) {
-      header.closest(".Wrapper").classList.toggle("hide")
+  $(event.target).toggleClass("fa-window-maximize fa-window-minimize")
+  $(event.target).closest(".Wrapper").toggleClass("maxi")
+
+  $(".header").each(function () {
+    if ($(this).get(0) !== $(event.target).closest(".header").get(0)) {
+      $(this).closest(".Wrapper").toggle()
     }
   })
 }
+
+
+
+$(document).ready(() => {
+  start()
+  $("#editor").keyup(updater)
+  $(".window").click(changeView)
+})
+

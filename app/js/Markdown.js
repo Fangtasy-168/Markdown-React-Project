@@ -1,4 +1,4 @@
-defaultText = `
+let defaultText = `
 # Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
